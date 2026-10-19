@@ -19,8 +19,8 @@ RM566133
 Otávio Ferreira
 RM565960
 
-Turma: preencher  
-Curso: preencher  
+Turma: 2TDSR  
+Curso: Análise e Desenvolvimento de Sistemas  
 IDE utilizada: IntelliJ IDEA
 
 Um mercado com jeito de bairro
@@ -152,13 +152,13 @@ O arquivo src/main/resources/application.yml configura a URL, usuário e senha d
 
 Deploy
 
-URL de produção: pendente de publicação.
+URL de produção: https://mercado-express-spring.onrender.com/
 
-O projeto inclui Dockerfile e docker-compose.yml para apoiar execução e deploy por contêiner. Antes da entrega final, publique a aplicação e um banco PostgreSQL em uma plataforma de hospedagem, teste o endereço HTTPS e substitua esta linha pela URL real. Não envie credenciais ao repositório.
+O deploy foi publicado no Render usando Docker e PostgreSQL. O plano gratuito pode suspender o serviço quando fica inativo; a primeira visita após um período parado pode levar alguns instantes para iniciar. Não envie credenciais ao repositório.
 
 Capturas do projeto
 
-
+As capturas deste README devem ser arquivos PNG dentro de docs/images/. Os links acima esperam estes nomes:
 
 01-landing-page.png
 02-cadastro.png
