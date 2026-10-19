@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8f3">
+    <meta name="description" content="Mercado Express: mercado de bairro, bons ingredientes e entrega no seu ritmo.">
+    <title>Mercado Express — o bairro, fresquinho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="landing">
+<header class="site-header">
+    <a class="brand" th:href="@{/}" aria-label="Mercado Express - início">
+        <span class="brand-mark">m<span>.</span></span>
+        <span>mercado<span class="brand-light">express</span></span>
+    </a>
+    <nav class="header-nav" aria-label="Navegação principal">
+        <a href="#selecionados">Nossa seleção</a>
+        <a href="#jeito">Nosso jeito</a>
+        <a href="#rodape">Contato</a>
+    </nav>
+    <div class="header-actions">
+        <a class="text-link" th:href="@{/login}" sec:authorize="isAnonymous()">Entrar</a>
+        <a class="button button-dark button-small" th:href="@{/signup}" sec:authorize="isAnonymous()">Criar conta <span>↗</span></a>
+        <a class="button button-dark button-small" th:href="@{/app}" sec:authorize="isAuthenticated()">Minha conta <span>↗</span></a>
+    </div>
+</header>
+
+<main>
+    <section class="hero-shell">
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="status-dot"></span> O mercado do seu bairro, em outro ritmo</div>
+            <h1>O fresquinho<br>chega <em>primeiro.</em></h1>
+            <p class="hero-description">Coisas boas, de gente perto. Escolha seus favoritos e deixe o resto com a gente.</p>
+            <div class="hero-buttons">
+                <a class="button button-green" th:href="@{/signup}">Quero fazer meu pedido <span>↗</span></a>
+                <a class="button button-quiet" href="#selecionados">Explorar a seleção <span>↓</span></a>
+            </div>
+            <div class="hero-proof">
+                <div class="avatar-stack"><span>🥑</span><span>🍓</span><span>🥖</span></div>
+                <p><strong>Pequenos produtores,</strong><br>grandes descobertas.</p>
+            </div>
+        </div>
+        <div class="hero-art" aria-label="Ilustração de sacola com produtos frescos">
+            <div class="art-note note-top"><span>✳</span> fresquinho<br>de verdade</div>
+            <div class="art-sun"></div>
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-bag">
+                <div class="bag-handle"></div>
+                <div class="bag-paper"></div>
+                <span class="produce produce-one">🥬</span>
+                <span class="produce produce-two">🥖</span>
+                <span class="produce produce-three">🍊</span>
+                <span class="produce produce-four">🥑</span>
+                <span class="produce produce-five">🌼</span>
+                <div class="bag-label">DAQUI<br><b>PERTINHO</b></div>
+            </div>
+            <div class="art-note note-bottom">feito com<br><strong>cuidado ♡</strong></div>
+            <div class="hero-caption">BOM DE PERTO. MELHOR AINDA NA SUA CASA.</div>
+        </div>
+        <div class="hero-index"><span>01</span> / 03</div>
+    </section>
+
+    <section class="ticker" aria-label="Nossos valores">
+        <div class="ticker-track"><span>FRESCO DE VERDADE</span><b>✳</b><span>GENTE DAQUI</span><b>✳</b><span>NO SEU TEMPO</span><b>✳</b><span>FRESCO DE VERDADE</span><b>✳</b><span>GENTE DAQUI</span><b>✳</b></div>
+    </section>
+
+    <section class="selection section-wrap" id="selecionados">
+        <div class="section-heading">
+            <div><div class="eyebrow">A curadoria da semana</div><h2>Pequenas coisas.<br><em>Grandes favoritos.</em></h2></div>
+            <a class="text-link underlined" th:href="@{/signup}">Ver tudo que chegou <span>↗</span></a>
+        </div>
+        <div class="product-grid" th:if="${!products.isEmpty()}">
+            <article class="product-card" th:each="product,iter : ${products}">
+                <div class="product-visual" th:classappend="${' tone-' + iter.index}">
+                    <span class="product-tag" th:text="${product.category}">Hortifruti</span>
+                    <img th:if="${product.imageUrl != null and product.imageUrl.startsWith('http')}" th:src="${product.imageUrl}" th:alt="${product.name}">
+                    <span class="product-emoji" th:unless="${product.imageUrl != null and product.imageUrl.startsWith('http')}" th:text="${product.imageUrl}">🍓</span>
+                    <span class="visual-spark">✳</span>
+                </div>
+                <div class="product-meta"><div><h3 th:text="${product.name}">Produto</h3><p th:text="${product.description}">Descrição do produto.</p></div><strong th:text="${'R$ ' + #numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</strong></div>
+            </article>
+        </div>
+        <div class="empty-state" th:if="${products.isEmpty()}">A seleção fresquinha está chegando. Volte em breve!</div>
+    </section>
+
+    <section class="manifesto" id="jeito">
+        <div class="manifesto-mark">m<span>.</span></div>
+        <div><div class="eyebrow eyebrow-light">Nosso jeito de fazer</div><h2>O mercado é pequeno.<br>O cuidado é <em>gigante.</em></h2></div>
+        <p>Mais do que entregar compras, a gente aproxima você do que é feito com carinho. Um mercado leve, local e com gosto de casa.</p>
+        <a class="button button-outline" th:href="@{/signup}">Vem com a gente <span>↗</span></a>
+        <span class="manifesto-flower">✳</span>
+    </section>
+
+    <section class="closing section-wrap">
+        <div class="eyebrow">Seu próximo favorito está por aqui</div>
+        <h2>Bom de perto.<br><em>Melhor ainda na sua casa.</em></h2>
+        <a class="button button-green" th:href="@{/signup}">Começar agora <span>↗</span></a>
+    </section>
+</main>
+
+<footer id="rodape" class="site-footer">
+    <a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+    <p>Feito com carinho, perto de você. © 2026 Mercado Express.</p>
+    <div><a th:href="@{/login}">Entrar</a><a th:href="@{/signup}">Criar conta</a></div>
+</footer>
+</body>
+</html>

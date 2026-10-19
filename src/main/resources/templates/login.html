@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Entrar — Mercado Express</title><link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+<a class="brand auth-brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+<main class="auth-layout">
+    <section class="auth-aside">
+        <div class="eyebrow eyebrow-light"><span class="status-dot"></span> Bom ter você de volta</div>
+        <h1>Seu mercado.<br>Seu <em>cantinho.</em></h1>
+        <p>Entre para acompanhar as novidades e cuidar da sua lista do seu jeito.</p>
+        <div class="auth-decoration">🥬 <span>🍊</span> 🥖</div>
+        <span class="aside-foot">FRESCO DE VERDADE. GENTE DAQUI.</span>
+    </section>
+    <section class="auth-main">
+        <div class="auth-card">
+            <div class="eyebrow">Acesse sua conta</div>
+            <h2>Que bom te ver.</h2>
+            <p class="auth-intro">Informe seus dados para continuar.</p>
+            <div class="alert alert-success" th:if="${registered}">Cadastro criado! Agora você já pode entrar.</div>
+            <div class="alert alert-error" th:if="${param.error}">E-mail ou senha incorretos. Confira e tente novamente.</div>
+            <div class="alert alert-info" th:if="${param.logout}">Você saiu da sua conta com segurança.</div>
+            <form th:action="@{/login}" method="post" class="form-stack">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" name="email" autocomplete="email" placeholder="voce@email.com" required autofocus>
+                <label for="password">Senha</label>
+                <input id="password" type="password" name="password" autocomplete="current-password" placeholder="Sua senha" required>
+                <button class="button button-green button-full" type="submit">Entrar na minha conta <span>↗</span></button>
+            </form>
+            <p class="auth-switch">Ainda não tem conta? <a th:href="@{/signup}">Criar cadastro</a></p>
+            <a class="back-link" th:href="@{/}">← Voltar para o início</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Painel do mercado — Mercado Express</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body class="workspace-page">
+<header class="site-header workspace-header">
+    <a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+    <div class="header-actions"><span class="admin-pill">PAINEL ADMIN</span><span class="user-greeting"><strong sec:authentication="name">admin</strong></span><form th:action="@{/logout}" method="post"><button class="text-link" type="submit">Sair</button></form></div>
+</header>
+<main class="workspace section-wrap">
+    <div class="workspace-heading admin-heading">
+        <div><div class="eyebrow"><span class="status-dot"></span> Área de gestão</div><h1>Seu mercado, <em>em boas mãos.</em></h1><p>Gerencie a seleção e deixe tudo pronto para o bairro.</p></div>
+        <a class="button button-green" th:href="@{/admin/products/new}">＋ Novo produto</a>
+    </div>
+    <div class="admin-stats"><div><span>PRODUTOS CADASTRADOS</span><strong th:text="${#lists.size(products)}">0</strong></div><div><span>DISPONÍVEIS NA LOJA</span><strong th:text="${activeCount}">0</strong></div><div><span>PERFIL ATIVO</span><strong>ADMIN</strong></div></div>
+    <div class="alert alert-success" th:if="${successMessage}" th:text="${successMessage}"></div>
+    <section class="table-panel">
+        <div class="table-heading"><div><h2>Catálogo de produtos</h2><p>Atualize preço, disponibilidade e informações.</p></div><a class="text-link underlined" th:href="@{/catalog}">Ver loja ↗</a></div>
+        <div class="table-scroll">
+            <table>
+                <thead><tr><th>PRODUTO</th><th>CATEGORIA</th><th>PREÇO</th><th>ESTOQUE</th><th>STATUS</th><th>AÇÕES</th></tr></thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td><div class="table-product"><span class="table-emoji" th:text="${product.imageUrl != null and !product.imageUrl.startsWith('http') ? product.imageUrl : '✳'}">🍓</span><div><strong th:text="${product.name}">Produto</strong><small th:text="${product.description}">Descrição do produto</small></div></div></td>
+                    <td th:text="${product.category}">Categoria</td>
+                    <td class="price-cell" th:text="${'R$ ' + #numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</td>
+                    <td th:text="${product.stock}">0</td>
+                    <td><span class="status-pill" th:classappend="${product.active ? ' is-active' : ' is-inactive'}" th:text="${product.active ? 'Ativo' : 'Oculto'}">Ativo</span></td>
+                    <td><div class="row-actions"><a class="action-link" th:href="@{/admin/products/{id}/edit(id=${product.id})}">Editar</a><form th:action="@{/admin/products/{id}/delete(id=${product.id})}" method="post" onsubmit="return confirm('Remover este produto do catálogo?')"><button class="action-link action-delete" type="submit">Excluir</button></form></div></td>
+                </tr>
+                <tr th:if="${products.isEmpty()}"><td colspan="6" class="table-empty">Nenhum produto cadastrado. Comece adicionando o primeiro.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

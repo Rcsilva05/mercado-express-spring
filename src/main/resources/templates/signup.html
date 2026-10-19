@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar conta — Mercado Express</title><link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+<a class="brand auth-brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+<main class="auth-layout">
+    <section class="auth-aside signup-aside">
+        <div class="eyebrow eyebrow-light"><span class="status-dot"></span> Um mercado mais perto</div>
+        <h1>Chega mais.<br>Tem lugar pra <em>você.</em></h1>
+        <p>Crie sua conta e descubra os sabores, produtores e histórias que moram pertinho.</p>
+        <div class="signup-stamp"><span>GENTE</span><b>DAQUI</b><span>♡</span></div>
+        <span class="aside-foot">SEU BAIRRO TEM GOSTO DE CASA.</span>
+    </section>
+    <section class="auth-main">
+        <div class="auth-card">
+            <div class="eyebrow">Faça parte</div>
+            <h2>Vamos começar?</h2>
+            <p class="auth-intro">É rapidinho. Seus dados ficam protegidos.</p>
+            <div class="alert alert-error" th:if="${signupError}" th:text="${signupError}"></div>
+            <form th:action="@{/signup}" th:object="${signupForm}" method="post" class="form-stack">
+                <label for="fullName">Seu nome</label>
+                <input id="fullName" th:field="*{fullName}" autocomplete="name" placeholder="Como podemos te chamar?" required>
+                <small class="field-error" th:errors="*{fullName}"></small>
+                <label for="email">E-mail</label>
+                <input id="email" type="email" th:field="*{email}" autocomplete="email" placeholder="voce@email.com" required>
+                <small class="field-error" th:errors="*{email}"></small>
+                <label for="password">Senha <span class="label-hint">mínimo de 8 caracteres</span></label>
+                <input id="password" type="password" th:field="*{password}" autocomplete="new-password" minlength="8" required>
+                <small class="field-error" th:errors="*{password}"></small>
+                <label for="confirmPassword">Confirme sua senha</label>
+                <input id="confirmPassword" type="password" th:field="*{confirmPassword}" autocomplete="new-password" required>
+                <button class="button button-green button-full" type="submit">Criar minha conta <span>↗</span></button>
+            </form>
+            <p class="auth-switch">Já tem conta? <a th:href="@{/login}">Entrar</a></p>
+            <a class="back-link" th:href="@{/}">← Voltar para o início</a>
+        </div>
+    </section>
+</main>
+</body>
+</html>

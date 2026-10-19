@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title th:text="${pageTitle + ' — Mercado Express'}">Produto — Mercado Express</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body class="workspace-page">
+<header class="site-header workspace-header"><a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a><a class="text-link" th:href="@{/admin/products}">← Voltar ao painel</a></header>
+<main class="form-workspace section-wrap">
+    <div class="eyebrow"><span class="status-dot"></span> Área de gestão</div>
+    <h1 th:text="${pageTitle}">Novo produto</h1>
+    <p class="form-lead">Conte um pouquinho sobre o que vai chegar fresquinho para o bairro.</p>
+    <form th:action="${formAction}" th:object="${productForm}" method="post" class="product-form">
+        <div class="form-grid">
+            <div class="form-field full-field"><label for="name">Nome do produto</label><input id="name" th:field="*{name}" placeholder="Ex.: Morango orgânico" required><small class="field-error" th:errors="*{name}"></small></div>
+            <div class="form-field"><label for="category">Categoria</label><input id="category" th:field="*{category}" placeholder="Ex.: Hortifruti" required><small class="field-error" th:errors="*{category}"></small></div>
+            <div class="form-field"><label for="price">Preço (R$)</label><input id="price" type="number" min="0.01" step="0.01" th:field="*{price}" placeholder="0,00" required><small class="field-error" th:errors="*{price}"></small></div>
+            <div class="form-field"><label for="stock">Unidades em estoque</label><input id="stock" type="number" min="0" th:field="*{stock}" placeholder="0" required><small class="field-error" th:errors="*{stock}"></small></div>
+            <div class="form-field"><label for="imageUrl">Imagem (URL) ou emoji</label><input id="imageUrl" th:field="*{imageUrl}" placeholder="🍓 ou https://..."><small class="field-error" th:errors="*{imageUrl}"></small></div>
+            <div class="form-field full-field"><label for="description">Descrição</label><textarea id="description" th:field="*{description}" rows="3" placeholder="Descreva origem, sabor ou diferencial." required></textarea><small class="field-error" th:errors="*{description}"></small></div>
+            <label class="checkbox-field full-field"><input type="checkbox" th:field="*{active}"><span>Produto disponível na loja</span></label>
+        </div>
+        <div class="form-actions"><a class="button button-quiet" th:href="@{/admin/products}">Cancelar</a><button class="button button-green" type="submit">Salvar produto <span>↗</span></button></div>
+    </form>
+</main>
+</body>
+</html>

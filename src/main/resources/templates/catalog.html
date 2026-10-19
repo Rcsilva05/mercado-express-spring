@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Seleção da semana — Mercado Express</title><link rel="stylesheet" th:href="@{/css/style.css}"></head>
+<body class="workspace-page">
+<header class="site-header workspace-header">
+    <a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+    <div class="header-actions"><span class="user-greeting">Olá, <strong sec:authentication="name">cliente</strong></span><form th:action="@{/logout}" method="post"><button class="text-link" type="submit">Sair</button></form></div>
+</header>
+<main class="workspace section-wrap">
+    <div class="workspace-heading"><div><div class="eyebrow"><span class="status-dot"></span> Feito com carinho, perto de você</div><h1>A seleção <em>da semana.</em></h1><p>O que está fresquinho por aqui, esperando por você.</p></div><a class="button button-quiet" th:href="@{/}">Voltar ao início <span>↗</span></a></div>
+    <div class="product-grid catalog-grid">
+        <article class="product-card" th:each="product,iter : ${products}">
+            <div class="product-visual" th:classappend="${' tone-' + iter.index}">
+                <span class="product-tag" th:text="${product.category}">Categoria</span>
+                <img th:if="${product.imageUrl != null and product.imageUrl.startsWith('http')}" th:src="${product.imageUrl}" th:alt="${product.name}">
+                <span class="product-emoji" th:unless="${product.imageUrl != null and product.imageUrl.startsWith('http')}" th:text="${product.imageUrl}">🍓</span>
+                <span class="visual-spark">✳</span>
+            </div>
+            <div class="product-meta"><div><h3 th:text="${product.name}">Produto</h3><p th:text="${product.description}">Descrição</p><small class="stock-label" th:text="${product.stock > 0 ? '● Disponível' : '○ Esgotado'}">Disponível</small></div><strong th:text="${'R$ ' + #numbers.formatDecimal(product.price, 1, 'POINT', 2, 'COMMA')}">R$ 0,00</strong></div>
+        </article>
+    </div>
+    <div class="empty-state" th:if="${products.isEmpty()}">Estamos preparando uma seleção especial. Volte em breve.</div>
+</main>
+</body>
+</html>

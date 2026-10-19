@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: mercado-express
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/mercado_express}
+    username: ${SPRING_DATASOURCE_USERNAME:mercado}
+    password: ${SPRING_DATASOURCE_PASSWORD:mercado_local}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  thymeleaf:
+    cache: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+
+server:
+  port: ${PORT:8080}
+
+app:
+  admin:
+    name: ${ADMIN_NAME:}
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
