@@ -154,26 +154,3 @@ Deploy
 
 URL de produção: https://mercado-express-spring.onrender.com/
 
-O deploy foi publicado no Render usando Docker e PostgreSQL. O plano gratuito pode suspender o serviço quando fica inativo; a primeira visita após um período parado pode levar alguns instantes para iniciar. Não envie credenciais ao repositório.
-
-Capturas do projeto
-
-As capturas deste README devem ser arquivos PNG dentro de docs/images/. Os links acima esperam estes nomes:
-
-01-landing-page.png
-02-cadastro.png
-03-login.png
-04-catalogo-cliente.png
-05-painel-admin.png
-06-formulario-produto.png
-07-produto-cadastrado.png
-08-produto-editado.png
-09-produto-excluido.png
-10-acesso-negado-cliente.png
-11-spring-initializr.png
-
-Se o nome de algum arquivo salvo for diferente, ajuste o caminho da imagem neste README para corresponder exatamente ao nome no GitHub — incluindo maiúsculas, minúsculas e a extensão .png.
-
-Entrega
-
-O arquivo ENTREGA.txt reúne os integrantes e os campos para completar antes de enviar o trabalho diretamente ao professor pelo chat individual do Teams. Antes do envio, preencham a turma e o curso, substituam o endereço de deploy pendente pela URL publicada e confirmem que as capturas estão no repositório.
