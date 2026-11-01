@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Converse com o assistente do Mercado Express e encontre seus próximos favoritos.">
+    <title>Assistente — Mercado Express</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="workspace-page">
+<header class="site-header workspace-header">
+    <a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
+    <div class="header-actions"><a class="text-link" th:href="@{/}">Voltar ao início</a></div>
+</header>
+<main class="chat-page section-wrap">
+    <section class="chat-intro">
+        <div class="eyebrow"><span class="status-dot"></span> Seu mercado, com uma ajudinha extra</div>
+        <h1>O que vai bem<br><em>na sua sacola?</em></h1>
+        <p>Converse com o assistente do Mercado Express para conhecer nossos produtos e descobrir combinações.</p>
+        <span class="chat-provider">Assistente de produtos · respostas em português</span>
+    </section>
+    <section class="chat-panel" aria-label="Conversa com o assistente">
+        <div class="chat-panel-heading">
+            <div class="chat-avatar">m.</div>
+            <div><strong>Assistente Mercado Express</strong><span>Disponível para ajudar com o catálogo</span></div>
+            <button id="history-refresh" class="text-link" type="button">Atualizar histórico</button>
+        </div>
+        <div id="chat-messages" class="chat-messages" aria-live="polite">
+            <div class="chat-message assistant-message">
+                <span class="message-label">ASSISTENTE</span>
+                <p>Olá! Posso ajudar você a conhecer os produtos do nosso mercado. O que está procurando?</p>
+            </div>
+        </div>
+        <p id="chat-status" class="chat-status" role="status"></p>
+        <form id="chat-form" class="chat-form">
+            <label for="message">Sua pergunta <span id="character-count">0/1000</span></label>
+            <textarea id="message" name="mensagem" maxlength="1000" rows="3" required placeholder="Ex.: O que você recomenda para um café da manhã especial?"></textarea>
+            <div class="chat-form-footer"><small>As respostas usam o catálogo atual e podem levar alguns segundos.</small><button id="send-button" class="button button-green" type="submit">Enviar pergunta <span>↗</span></button></div>
+        </form>
+    </section>
+</main>
+<script th:src="@{/js/chat.js}" defer></script>
+</body>
+</html>

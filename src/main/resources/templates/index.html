@@ -20,6 +20,7 @@
     <nav class="header-nav" aria-label="Navegação principal">
         <a href="#selecionados">Nossa seleção</a>
         <a href="#jeito">Nosso jeito</a>
+        <a th:href="@{/chat}">Assistente</a>
         <a href="#rodape">Contato</a>
     </nav>
     <div class="header-actions">
@@ -38,6 +39,7 @@
             <div class="hero-buttons">
                 <a class="button button-green" th:href="@{/signup}">Quero fazer meu pedido <span>↗</span></a>
                 <a class="button button-quiet" href="#selecionados">Explorar a seleção <span>↓</span></a>
+                <a class="button button-quiet" th:href="@{/chat}">Conversar com o assistente <span>↗</span></a>
             </div>
             <div class="hero-proof">
                 <div class="avatar-stack"><span>🥑</span><span>🍓</span><span>🥖</span></div>

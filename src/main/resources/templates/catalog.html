@@ -4,7 +4,7 @@
 <body class="workspace-page">
 <header class="site-header workspace-header">
     <a class="brand" th:href="@{/}"><span class="brand-mark">m<span>.</span></span><span>mercado<span class="brand-light">express</span></span></a>
-    <div class="header-actions"><span class="user-greeting">Olá, <strong sec:authentication="name">cliente</strong></span><form th:action="@{/logout}" method="post"><button class="text-link" type="submit">Sair</button></form></div>
+    <div class="header-actions"><a class="text-link" th:href="@{/chat}">Assistente</a><span class="user-greeting">Olá, <strong sec:authentication="name">cliente</strong></span><form th:action="@{/logout}" method="post"><button class="text-link" type="submit">Sair</button></form></div>
 </header>
 <main class="workspace section-wrap">
     <div class="workspace-heading"><div><div class="eyebrow"><span class="status-dot"></span> Feito com carinho, perto de você</div><h1>A seleção <em>da semana.</em></h1><p>O que está fresquinho por aqui, esperando por você.</p></div><a class="button button-quiet" th:href="@{/}">Voltar ao início <span>↗</span></a></div>

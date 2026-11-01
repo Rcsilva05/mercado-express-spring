@@ -32,6 +32,11 @@ public class HomeController {
         return "login";
     }
 
+    @GetMapping("/chat")
+    public String chat() {
+        return "chat";
+    }
+
     @GetMapping("/signup")
     public String signup(Model model) {
         if (!model.containsAttribute("signupForm")) {

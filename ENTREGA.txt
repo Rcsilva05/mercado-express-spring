@@ -1,0 +1,16 @@
+CP6 - Spring AI com Ollama
+
+Turma: 2TDSR
+Instituição: FIAP - 2026
+Curso: Tecnologia em Análise e Desenvolvimento de Sistemas
+IDE utilizada: IntelliJ IDEA
+GitHub: https://github.com/Rcsilva05/mercado-express-spring
+
+Integrantes:
+Natália Cristina - RM564099
+Nickolas Davi - RM564105
+Rodrigo Silva - RM565162
+Samara Vilela - RM566133
+Otávio Ferreira - RM565960
+
+Vídeo de demonstração: não incluído nesta entrega.
