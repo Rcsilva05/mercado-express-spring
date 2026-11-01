@@ -4,7 +4,7 @@ Turma: 2TDSR
 Instituição: FIAP - 2026
 Curso: Tecnologia em Análise e Desenvolvimento de Sistemas
 IDE utilizada: IntelliJ IDEA
-GitHub: https://github.com/Rcsilva05/mercado-express-spring
+GitHub (projeto e README): https://github.com/Rcsilva05/mercado-express-spring/tree/rcsilva05-spring-ai-project
 
 Integrantes:
 Natália Cristina - RM564099
