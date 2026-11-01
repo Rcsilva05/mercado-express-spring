@@ -55,9 +55,7 @@ As versões efetivamente configuradas estão no `pom.xml`. A configuração do O
 
 O prompt instrui o modelo a responder em português, não inventar dados do mercado e indicar preço e estoque com base no catálogo. Como em outros modelos generativos, a redação da resposta pode variar; os valores do catálogo continuam sendo a fonte dos dados.
 
-## Imagens do projeto
-
-### Assistente e testes do Checkpoint 6
+## Evidências do Checkpoint 6
 
 O assistente em execução usa os dados de preço e estoque do catálogo:
 
@@ -74,42 +72,6 @@ A API rejeita perguntas vazias (**400 Bad Request**):
 O histórico retorna as conversas registradas, da mais recente para a mais antiga:
 
 ![GET /api/historico com as conversas persistidas](docs/images/14-postman-historico.png)
-
-### Mercado Express e controle de acesso
-
-![Página inicial do Mercado Express](docs/images/01-landing-page.png)
-
-O visitante pode criar uma conta de cliente e entrar pela tela de login:
-
-![Formulário de cadastro](docs/images/02-cadastro.png)
-
-![Tela de login personalizada](docs/images/03-login.png)
-
-Clientes consultam os produtos ativos:
-
-![Catálogo do cliente](docs/images/04-catalogo-cliente.png)
-
-O perfil administrador pode gerenciar o catálogo:
-
-![Painel administrativo de produtos](docs/images/05-painel-admin.png)
-
-![Formulário administrativo de produto](docs/images/06-formulario-produto.png)
-
-As telas a seguir ilustram o fluxo de criação, atualização e exclusão de um produto:
-
-![Produto cadastrado](docs/images/07-produto-cadastrado.png)
-
-![Produto atualizado](docs/images/08-produto-editado.png)
-
-![Produto excluído](docs/images/09-produto-excluido.png)
-
-O acesso ao painel administrativo é negado para contas de cliente:
-
-![Acesso administrativo negado ao cliente](docs/images/10-acesso-negado-cliente.png)
-
-Configuração de referência do Spring Initializr:
-
-![Spring Initializr](docs/images/11-spring-initializr.png)
 
 ## Como executar no Windows
 
@@ -316,7 +278,7 @@ src/main/resources/
   templates/     Páginas Thymeleaf
   static/css/    Estilos
   static/js/     JavaScript da interface do assistente
-docs/images/     Capturas do projeto e evidências dos testes
+docs/images/     Capturas do Checkpoint 6 e evidências dos testes
 database/        Script de configuração local do PostgreSQL
 postman/         Coleção de testes da API
 ```
